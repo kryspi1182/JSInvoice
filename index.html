@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="script.js"></script>
+    </head>
+    <body onload="onLoadScript();">
+        <div id="invoice">
+            <header>Paragon</header>
+            <div id="invoice-table">
+                <div id="header-row">
+                    <div class="invoice-cell">
+                        LP
+                    </div>
+                    <div class="invoice-cell">
+                        NAZWA
+                    </div>
+                    <div class="invoice-cell">
+                        ILOŚĆ
+                    </div>
+                    <div class="invoice-cell">
+                        CENA
+                    </div>
+                    <div class="invoice-cell">
+                        SUMA
+                    </div>
+                    <div>
+                        OPCJE
+                    </div>
+                </div>
+                <div id="invoice-content">
+                
+                </div>
+                <div id="sum-row">
+                    <div class="invoice-cell">
+                        SUMA
+                    </div>
+                    <div class="invoice-cell" id="invoice-sum">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h3>Nowa pozycja</h3>
+        <form action="#" id="form">
+            <label>Nazwa: </label><input id="name">
+            <label>Ilość: </label><input id="quantity" type="number">
+            <label>Cena: </label><input id="price" type="number">
+            <input type="submit">
+        </form>
+        <div>
+            <button onclick="clearStorage();">Wyczyść local storage</button>
+        </div>
+    </body>
+    
+</html>
