@@ -1,0 +1,148 @@
+body
+{
+   position: fixed;
+    
+   vertical-align: middle;
+    text-align: center;
+    align-content: center;
+    margin-top: 5em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 100%;
+    font-family: 'Open Sans', sans-serif;
+}
+#invoice header{
+    text-transform: uppercase;
+    text-align: center;
+    padding: 10px 0px;
+    border-bottom: 2px  solid #a8a8a8;
+    border-top: 2px  solid #a8a8a8;
+    background-color: #a5ffa1;
+    font-weight: 700;
+    font-size: 1.7em;
+}
+#header-row .invoice-cell {
+    
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+    
+    
+}
+#header-row{
+    padding: 10px;
+    background-color: #dedede;
+    
+}
+.invoice-row .invoice-cell{
+    
+    display: inline-block;
+    margin: 2px;
+    text-align: center;
+    width: 100px;
+    
+}
+.invoice-row{
+    width: auto;
+    padding: 10px 0;
+}
+.invoice-content-div:nth-child(odd)
+{
+    background-color: #a8a8a8;
+    color: #f2f2f2;
+}
+.invoice-content-div:nth-child(even)
+{
+    background-color: #dedede;
+}
+.invoice-cell p{
+    display: inline-block;
+    margin: 0 10px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+.invoice-cell:last-child{
+    width: 300px;
+}
+#header-row .invoice-cell:last-child{
+    width: 300px;
+}
+.invoice-edit input{
+    width: 100px;
+    text-align: center;
+    margin: 5px;
+    border-radius: 15%;
+    height: 25px;
+    background-color: #dedede;
+}
+.invoice-edit{
+    margin-right: 13em;
+}
+
+button, input[type=submit]{
+    cursor: pointer;
+    background-color: #a5ffa1;
+    width: 100px;
+    height: 42px;
+    border-radius: 30px;
+    border:none;
+    margin: 5px;
+    background-size: 100% 100%;
+    font-weight: 700;
+}
+button:hover, input[type=submit]:hover {
+  background-image: linear-gradient(
+    90deg,
+    transparent 10%,
+    #3ec738 10% 20%,
+    transparent 20% 30%,
+    #3ec738 30% 40%,
+    transparent 40% 50%,
+    #3ec738 50% 60%,
+    transparent 60% 70%,
+    #3ec738 70% 80%,
+    transparent 80% 90%,
+    #3ec738 90% 100%
+  );
+  animation: background 10s linear infinite;
+}
+@keyframes background {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 200px 0;
+    }
+}
+#sum-row{
+    background-color: #3ec738;
+    color:  #f2f2f2;
+    font-weight: 700;
+    font-size: 1.5em;
+}
+.new-item{
+    background-color: #dedede;
+}
+.new-item input:not([type=submit]){
+    width: 100px;
+    text-align: center;
+    margin: 5px;
+    border-radius: 15%;
+    height: 25px;
+    background-color: #dedede;
+}
+.new-item button{
+    height: 50px;
+    width: 150px;
+    text-align: center;
+}
+.new-item label{
+    font-style: italic;
+    font-weight: 700;
+}
+
+#invoice-sum{
+    display: inline-block;
+}
+    

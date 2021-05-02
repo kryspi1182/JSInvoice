@@ -26,8 +26,15 @@ function onLoadScript(){
     const price = document.getElementById("price");
     const content = document.getElementById("invoice-content");
     const invoiceSum = document.getElementById("invoice-sum");
+    const invoiceHeader = document.getElementById("invoice-header");
+    invoiceHeader.innerHTML = "Paragon " + getDate();
     if(localStorage.getItem("products") != null){
         loadProductsFromStorage();
+    }
+    
+    function getDate(){
+        var now = new Date();
+        return now.getDate() + "/" + (now.getMonth() + 1) + "/" + now.getFullYear();
     }
     
     function countTotalSum(){
@@ -47,7 +54,7 @@ function onLoadScript(){
         for (var x = 0; x < products.length; x++)
             createInvoiceDiv(products[x]);
         localStorage.setItem("products", JSON.stringify(products));
-        invoiceSum.innerHTML = countTotalSum().toFixed(2);
+        invoiceSum.innerHTML = countTotalSum().toFixed(2) + " zł";
     }
     
     function loadProductsFromStorage(){
@@ -63,11 +70,13 @@ function onLoadScript(){
     }
     
     function moveProductDown(productId){
-        var tmpDown = new Product(++products[productId-1].id,
+        
+        if(productId < products.length){
+            var tmpDown = new Product(++products[productId-1].id,
                              products[productId-1].name,
                              products[productId-1].quantity,
                              products[productId-1].price);
-        if(productId < products.length){
+            
             products[productId-1] = new Product(--products[productId].id,
                                                 products[productId].name,
                                                 products[productId].quantity,
@@ -80,11 +89,13 @@ function onLoadScript(){
     }
     
     function moveProductUp(productId){
-        var tmpUp = new Product(--products[productId-1].id,
+        
+        if(productId > 1){
+            var tmpUp = new Product(--products[productId-1].id,
                              products[productId-1].name,
                              products[productId-1].quantity,
                              products[productId-1].price);
-        if(productId > 1){
+            
             products[productId-1] = new Product(++products[productId-2].id,
                                                 products[productId-2].name,
                                                 products[productId-2].quantity,
@@ -166,29 +177,29 @@ function onLoadScript(){
 
         var cellPrice = document.createElement("div");
         cellPrice.className = "invoice-cell";
-        cellPrice.innerHTML = tempProduct.price;
+        cellPrice.innerHTML = tempProduct.price + " zł";
 
         var cellSum = document.createElement("div");
         cellSum.className = "invoice-cell";
-        cellSum.innerHTML = tempProduct.sum().toFixed(2);
+        cellSum.innerHTML = tempProduct.sum().toFixed(2) + " zł";
         
         var cellOptions = document.createElement("div");
         cellOptions.className = "invoice-cell";
         
         var cellDelete = document.createElement("p");
-        cellDelete.innerHTML = "Usuń";
+        cellDelete.innerHTML = "<i class=\"fas fa-trash\"></i>";
         cellDelete.addEventListener("click", function() {deleteProduct(tempProduct.id);});
         
         var cellEdit = document.createElement("p");
-        cellEdit.innerHTML = "Edytuj";
+        cellEdit.innerHTML = "<i class=\"far fa-edit\"></i>";
         cellEdit.addEventListener("click", toggleFormVisibility);
         
         var cellMoveUp = document.createElement("p");
-        cellMoveUp.innerHTML = "Przesuń w górę";
+        cellMoveUp.innerHTML = "<i class=\"fas fa-arrow-up\"></i>";
         cellMoveUp.addEventListener("click", function() { moveProductUp(tempProduct.id); });
         
         var cellMoveDown = document.createElement("p");
-        cellMoveDown.innerHTML = "Przesuń w dół";
+        cellMoveDown.innerHTML = "<i class=\"fas fa-arrow-down\"></i>";
         cellMoveDown.addEventListener("click", function() { moveProductDown(tempProduct.id); });
         
         cellOptions.appendChild(cellDelete);
@@ -223,10 +234,20 @@ function onLoadScript(){
     
     function editProduct(newId, newName, newQuantity, newPrice){
         
-        console.log(newId);
+        /*console.log(newId);
         console.log(newName);
         console.log(newQuantity);
-        console.log(newPrice);
+        console.log(newPrice);*/
+        
+        if (newQuantity < 0){
+            alert("Podano ujemną ilość!");
+            return;
+        }
+        
+        if (newPrice < 0){
+            alert("Podano ujemną cenę!");
+            return;
+        }
         
         products[newId-1].name = newName;
         products[newId-1].quantity = newQuantity;

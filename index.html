@@ -3,10 +3,14 @@
     <head>
         <meta charset="utf-8">
         <script src="script.js"></script>
+        <script src="https://kit.fontawesome.com/fc6874d9fd.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&display=swap" rel="stylesheet">
     </head>
     <body onload="onLoadScript();">
         <div id="invoice">
-            <header>Paragon</header>
+            <header id="invoice-header"></header>
             <div id="invoice-table">
                 <div id="header-row">
                     <div class="invoice-cell">
@@ -24,7 +28,7 @@
                     <div class="invoice-cell">
                         SUMA
                     </div>
-                    <div>
+                    <div class="invoice-cell">
                         OPCJE
                     </div>
                 </div>
@@ -41,15 +45,17 @@
                 </div>
             </div>
         </div>
-        <h3>Nowa pozycja</h3>
-        <form action="#" id="form">
-            <label>Nazwa: </label><input id="name">
-            <label>Ilość: </label><input id="quantity" type="number">
-            <label>Cena: </label><input id="price" type="number">
-            <input type="submit">
-        </form>
-        <div>
-            <button onclick="clearStorage();">Wyczyść local storage</button>
+        <div class="new-item">
+            <h3>Nowa pozycja</h3>
+            <form action="#" id="form">
+                <label>Nazwa: </label><input id="name">
+                <label>Ilość: </label><input id="quantity" type="number" step="0.01" min="0">
+                <label>Cena (zł): </label><input id="price" type="number" step="0.01" min="0">
+                <input type="submit">
+            </form>
+            <div>
+                <button onclick="clearStorage();">Wyczyść local storage</button>
+            </div>
         </div>
     </body>
     
